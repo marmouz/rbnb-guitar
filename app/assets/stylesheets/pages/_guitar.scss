@@ -1,0 +1,69 @@
+.guitar-presentation {
+  padding: 20px;
+  background-color: white;
+
+  .guitar-price {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .img {
+    width: 150px;
+  }
+}
+
+.guitar-description {
+  padding: 20px;
+  background-color: white;
+}
+
+.stick {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 500;
+}
+
+.chat_header {
+  border-bottom: 1px solid rgb(240,240,240);
+  padding: 10px;
+  padding-top: 18px;
+}
+.chat_header {
+  font-size: 26px;
+}
+.nav_mid > h1, .nav_mid > h2, .nav_mid > p {
+  padding-left: 20px;
+}
+
+.nav_mid {
+  padding-top: 18px;
+
+}
+
+.nav_mid {
+  width: 20%;
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+  color: white;
+  background-color: #2D2D2D;
+}
+
+.chat_disp {
+  height: 100vh;
+  width: 80%;
+  overflow: auto;
+}
+
+.container_ns {
+  display: flex;
+  height: 100vh;
+
+}
+
+.price {
+  font-size: 22px !important;
+  font-weight: bold;
+  position: relative;
+  left: 90%;
+}
