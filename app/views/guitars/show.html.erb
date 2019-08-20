@@ -1,0 +1,79 @@
+
+<div class="container">
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-7 mb-3">
+        <div class="guitar-presentation">
+            <div class="title-price d-flex justify-content-between">
+              <div><h1><%= @guitar.brand %> <%= @guitar.model %> </h1></div>
+              <div class="guitar-price"><p> <%=  @guitar.price_per_day %> €/day</p></div>
+            </div>
+            <div class="img">
+              <%= image_tag("https://www.pourlesmusiciens.com/medias/45/cort-earth-100-dreadnought-epicea-acajou-large-3-66889.jpg") %>
+            </div>
+        </div>
+    </div>
+    <div class="col-5 mb-3">
+      <div class="calendar-card flex-grow-1">
+        <h2>Book a period of time</h2>
+        <p>Please check below the availability dates of this guitar:</p>
+        <%= image_tag("calendar-en-dur.png", alt: "calendar",  class: "img-calendar mx-auto d-block") %>
+        <br>
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0"> Book period </button>
+         <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-7">
+      <div class="guitar-description">
+
+        <h2>Characteristics</h2>
+        <ul>
+          <li>Brand: <%= @guitar.brand %></li>
+          <li>Model: <%= @guitar.model %></li>
+          <li>Type: <%= @guitar.genre %></li>
+          <li>Level: <%= @guitar.level %></li>
+        </ul>
+         <br>
+        <h2>Description</h2>
+        <p>
+          La guitare acoustique folk type Dreadnought CORT Earth 100 (ref E100TF) est une des guitares acoustiques table massive favorite des musiciens. Avec sa rosace "Wood-Ring" ,le dos et les eclisses en Acajou laminé, cette guitare acoustique possède un belle esthétique. De construction robuste, la guitare Earth 100 peut être emmenée partout sans crainte.
+        </p>
+        <p>
+          Concernant le jeu du musicien, la Earth 100 possède un manche très confortable et est une guitare acoustique corde acier au son assez équilibrée, clair et brillant grâce à sa table en épicéa massif. Cette sonorité neutre rend donc cette guitare polyvalente et idéale pour accompagner un chant par exemple.
+        </p>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="user-card">
+        <h2>Owner profile</h2>
+        <div class="d-flex align-items-top">
+          <%= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "250x250", class: "avatar-bordered" %>
+          <div class="user-name-address">
+            <p> Name: Nounours </p>
+            <p> Address: ............. <%=  @user.address %></p>
+          </div>
+        </div>
+        <p> <strong>Contact:</strong> <%=  @user.email %></p>
+        <br>
+        <h2>Reviews</h2>
+          <div>
+              <% 5.times do %>
+              <i class="fa fa-star gold"></i>
+              <% end %>
+          </div>
+          <div class="review">
+            <p>"Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent"</p>
+          </div>
+          <%= link_to profil_path(@user) do %>
+          <p>See <%= @user.email %>'s others guitars</p>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
