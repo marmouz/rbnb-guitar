@@ -12,9 +12,9 @@ Guitar.destroy_all
 User.destroy_all
 puts "create 2 users"
 
-user1 = User.new(email: "nounours@gmail.com", password: "nounours")
+user1 = User.new(email: "nounours@gmail.com", password: "nounours", first_name: "nicolas", last_name:"schmoutz", address:"23 rue des picoteuses")
 user1.save!
-user2 = User.new(email: "faust@gmail.com", password: "faustine")
+user2 = User.new(email: "faust@gmail.com", password: "faustine", first_name: "faustine", last_name:"faustineier", address:"11 rue du coteau, 92370 CHAVILLE")
 user2.save!
 
 puts "create guitar"

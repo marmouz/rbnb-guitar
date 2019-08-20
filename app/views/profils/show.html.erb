@@ -1,0 +1,135 @@
+<div class="container emp-profile">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-center">
+        <%= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "200x200", class: "round" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="profile-head">
+        <h5>
+            <%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %>
+        </h5>
+        <h6>
+            Niveau Expert // Style : Rock n' Roll
+        </h6>
+        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false"><%= @user.first_name.capitalize  %>' guitars</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="col-md-2">
+            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-work">
+              <p>HISTORIQUE DES COMMANDES</p>
+              <p>> date commande nounours en dur <br>> modèle guitare commande nounours<br> > prix commande nounours<br>> loueur commande nounours</p>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <label>User Id</label>
+                      </div>
+                      <div class="col-md-6">
+                          <p>#<%= @user.id %></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <label>Name</label>
+                      </div>
+                      <div class="col-md-6">
+                          <p><%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <label>Email</label>
+                      </div>
+                      <div class="col-md-6">
+                          <p><%= @user.email %></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <label>Adresse</label>
+                      </div>
+                      <div class="col-md-6">
+                          <p><%= @user.address %></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <label>Phone</label>
+                      </div>
+                      <div class="col-md-6">
+                          <p>+ 33 6 28 29 65 44</p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <label>Présentation</label><br/>
+                          <p>Salut à tous, je suis Nounours. Cette présentation est tout à fait en dur, aussi vous propose-je de la modifier et d'intégrer ue présentation succinte dans les params de nos users. Bisous</p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <label>Reviews</label><br/>
+                          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                          <p>"Ceci est une réview en dur qu'il conviendra de créer en db, via l'utilitaire seed, notamment."</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="guitar" role="tabpanel" aria-labelledby="guitar-tab">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label><i class="fas fa-guitar"></i> Guitares Possedées : </label>
+                    </div>
+                      <% @user.guitars.each do |guitar| %>
+                        <div class="card-product">
+                          <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-large" %>
+                          <div class="card-product-infos" style="width: 500px">
+                            <p><strong>Modèle :</strong> "<%= guitar.model %>"</p>
+                            <p><strong>Niveau :</strong> "<%= guitar.level %>"
+                            <strong>Marque :</strong> "<%= guitar.brand %>"</p>
+                            <p><strong>Style :</strong> "<%= guitar.genre %>"
+                            <strong>Prix :</strong> "<%= guitar.price_per_day %> €"</p>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%= simple_form_for @guitar do |f| %>
+                        <%= f.input :model %>
+                        <%= f.input :level %>
+                        <%= f.input :brand %>
+                        <%= f.input :genre %>
+                        <%= f.input :price_per_day %>
+                        <%#= f.input :photo_cache, as: :hidden %>
+                        <%= f.submit class: "btn btn-info" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
