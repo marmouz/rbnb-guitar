@@ -2,6 +2,8 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "banner";
+@import "footer";
 
 .stick {
   position: sticky;
@@ -47,9 +49,7 @@
   height: 100vh;
 
 }
-body {
-  font-family: 'Open Sans', sans-serif;
-}
+
 
 h1, h2, h3 {
   font-weight: bold;
