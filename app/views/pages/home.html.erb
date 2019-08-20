@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://cdn.shopify.com/s/files/1/2062/6813/products/01-traveler-guitar-speedster-wine-red-front.jpg?v=1532190202);">
+  <div class="container">
+    <h1>GuitaRnb</h1>
+    <p>Rent a guitar around the world.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-12 col-lg-6 ">
+      <h1>Choose a guitar</h1>
+      <%= link_to "List", guitars_path, class: "btn btn-outline-danger my-2 my-sm-0 px-4"  %>
+    </div>
+  </div>
+</div>
