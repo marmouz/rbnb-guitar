@@ -1,0 +1,15 @@
+<img src="https://source.unsplash.com/900x250/?city" alt="image ville">
+
+<h2><%= @guitar.name %></h2>
+<p><strong><%= @guitar.address %></strong> </p>
+<p><%= @guitar.description %></p>
+<p><%= @guitar.price_per_night %>€/Nuit <em>TTC</em></p>
+<p><%= @guitar.number_of_guests %> personnes maximum</p>
+
+
+<button class="btn btn-outline-danger" type="button"><%= link_to "Delete", guitar_path(@guitar),
+      method: :delete,
+      data: { confirm: "Are you sure?", class: "alert" } %></button>
+<button class="btn btn-outline-info" type="button"><%= link_to "back to list", guitars_path %></button>
+<button class="btn btn-outline-success" type="button">
+<%= link_to "edit guitar", edit_guitar_path(@guitar) %></button>

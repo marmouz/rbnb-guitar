@@ -2,3 +2,112 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+
+.stick {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 500;
+}
+
+.chat_header {
+  border-bottom: 1px solid rgb(240,240,240);
+  padding: 10px;
+  padding-top: 18px;
+}
+.chat_header {
+  font-size: 26px;
+}
+.nav_mid > h1, .nav_mid > h2, .nav_mid > p {
+  padding-left: 20px;
+}
+
+.nav_mid {
+  padding-top: 18px;
+
+}
+
+.nav_mid {
+  width: 20%;
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+  color: white;
+  background-color: #2D2D2D;
+}
+
+.chat_disp {
+  height: 100vh;
+  width: 80%;
+  overflow: auto;
+}
+
+.container_ns {
+  display: flex;
+  height: 100vh;
+
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+h1 {
+  font-size: 25px;
+}
+h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+h3 {
+  font-size: 23px;
+}
+
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+.avatar-large {
+  width: 56px;
+  border-radius: 50%;
+  border: grey 1px solid;
+}
+.price {
+  font-size: 22px !important;
+  font-weight: bold;
+  position: relative;
+  left: 90%;
+}

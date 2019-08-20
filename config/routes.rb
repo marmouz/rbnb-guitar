@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :guitar do
-    resources :booking, only: [:index, :new, :create]
+  resources :guitars do
+    resources :bookings, only: [:index, :new, :create]
   end
 
-  resources :booking, only: [:show, :destroy] do
-    resources :review, only: [:index, :new, :create]
+  resources :bookings, only: [:show, :destroy] do
+    resources :reviews, only: [:index, :new, :create]
   end
-  resources :profil, only: :show
+  resources :profils, only: :show
 end
