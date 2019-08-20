@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2019_08_19_124222) do
   create_table "guitars", force: :cascade do |t|
     t.bigint "user_id"
     t.string "model"
-    t.string "level"
+    t.string "level", default: "beginner"
     t.string "brand"
-    t.string "type"
+    t.string "genre"
     t.integer "price_per_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2019_08_19_124222) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "address", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
