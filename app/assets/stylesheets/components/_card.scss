@@ -13,17 +13,17 @@
 // Pour la page Liste Guitar, product finder, fiche user
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 160px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin: 10px;
 }
 
 .card-product img {
-  height: 100%;
-  width: 120px;
+  height: 90%;
+  width: 140px;
   object-fit: cover;
 }
 
