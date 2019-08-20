@@ -3,6 +3,7 @@ class GuitarsController < ApplicationController
 
   def index
     @guitars = Guitar.all
+    console
   end
 
   def show
