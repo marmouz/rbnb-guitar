@@ -14,7 +14,7 @@ puts "create 2 users"
 
 user1 = User.new(email: "nounours@gmail.com", password: "nounours")
 user1.save!
-user2 = User.new(email: "faust@gamil.com", password: "faustine")
+user2 = User.new(email: "faust@gmail.com", password: "faustine")
 user2.save!
 
 puts "create guitar"

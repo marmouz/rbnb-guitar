@@ -1,5 +1,5 @@
 class Guitar < ApplicationRecord
-  LEVEL = ["debutant", "middle", "expert"]
+  LEVEL = ["beginner", "middle", "expert"]
   belongs_to :user
   has_many :bookings
 
