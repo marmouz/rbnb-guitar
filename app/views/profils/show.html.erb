@@ -109,6 +109,8 @@
                             <strong>Marque :</strong> "<%= guitar.brand %>"</p>
                             <p><strong>Style :</strong> "<%= guitar.genre %>"
                             <strong>Prix :</strong> "<%= guitar.price_per_day %> €"</p>
+                            <%= link_to  "Show", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0", id: "btn-show-profil" %>
+
                           </div>
                         </div>
                       <% end %>
@@ -119,12 +121,12 @@
                     <div class="col-md-12">
                       <%= simple_form_for @guitar do |f| %>
                         <%= f.input :model %>
-                        <%= f.input :level %>
+                        <%= f.input :level, collection: Guitar::LEVEL %>
                         <%= f.input :brand %>
                         <%= f.input :genre %>
                         <%= f.input :price_per_day %>
                         <%#= f.input :photo_cache, as: :hidden %>
-                        <%= f.submit class: "btn btn-info" %>
+                        <%= f.submit class: "btn btn-outline-danger my-2" %>
                       <% end %>
                     </div>
                   </div>

@@ -20,13 +20,13 @@ user2.save!
 puts "create guitar"
 
 5.times do
-  guitar = Guitar.new(model: Faker::Music::RockBand.name, brand: Faker::Music::Phish.song, genre: Faker::Music.genre, price_per_day: rand(1..100))
+  guitar = Guitar.new(model: Faker::Music::RockBand.name, brand: Faker::Music::Phish.song, genre: Faker::Music.genre, price_per_day: rand(1..100), level: Guitar::LEVEL.sample)
   guitar.user = user1
   guitar.save!
 end
 
 5.times do
-  guitar = Guitar.new(model: Faker::Music::RockBand.name, brand: Faker::Music::Phish.song, genre: Faker::Music.genre, price_per_day: rand(1..100))
+  guitar = Guitar.new(model: Faker::Music::RockBand.name, brand: Faker::Music::Phish.song, genre: Faker::Music.genre, price_per_day: rand(1..100), level: Guitar::LEVEL.sample)
   guitar.user = user2
   guitar.save!
 end

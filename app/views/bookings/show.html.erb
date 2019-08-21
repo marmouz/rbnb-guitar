@@ -1,2 +1,52 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<div class="container">
+  <h2 style="padding-top: 50px; margin-bottom: 50px;">>>> Yeees NOUNOURS !!! Thanks for using GuitaRnb ! <<<</h2>
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:50%; border-top:none">Modèle</th>
+        <th style="width:20%; border-top:none">Owner</th>
+        <th style="width:8%; border-top:none" class="text-center">Jours</th>
+        <th style="width:8%; border-top:none" class="text-center">Prix/jour</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-th="Product">
+          <div class="row">
+            <div class="col-sm-2 hidden-xs">
+
+              <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-xlarge" %>
+              <!-- <img src="http://placehold.it/100x100" alt="..." class="img-responsive"/> -->
+            </div>
+            <div class="col-sm-10">
+              <h4 class="nomargin"><%= @booking.guitar.model %></h4>
+              <p><strong>Marque :</strong> "<%= @booking.guitar.brand %>"</p>
+              <p><strong>Style :</strong> "<%= @booking.guitar.genre %>"
+              <strong>Niveau :</strong> "<%= @booking.guitar.level %>"</p>
+            </div>
+          </div>
+        </td>
+        <td><p><strong>Nom : </strong><%= @booking.user.first_name.capitalize %> <%= @booking.user.last_name.capitalize %>
+          <p><strong>Email : </strong><%= @booking.user.email%></p>
+          <p><strong>Adresse : </strong><%= @booking.user.address %></p>
+        </td>
+        <td data-th="Quantity">
+          <p class="text-center"><%= number_of_days = (@booking.end_date - @booking.start_date).to_i %></p>
+        </td>
+        <td data-th="Subtotal" class="text-center"><%= @booking.guitar.price_per_day %>,00 €</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="visible-xs">
+        <td colspan="5" style="text-align: right; padding-right: 30px;"><strong>Total : </strong><%= number_of_days * @booking.guitar.price_per_day %>,00 €</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;" colspan="5">
+          <!-- <a href="#" class="btn btn-warning"><i class="fa fa-angle-right"></i> Back to home</a> -->
+        <%= link_to "> Back to home",root_path , class: "btn btn-outline-danger my-2 my-sm-0" %>
+
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

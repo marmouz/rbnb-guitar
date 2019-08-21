@@ -19,7 +19,7 @@
         <p>Please check below the availability dates of this guitar:</p>
         <%= image_tag("calendar-en-dur.png", alt: "calendar",  class: "img-calendar mx-auto d-block") %>
         <br>
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0"> Book period </button>
+        <%= link_to "Book now !", booking_path(2), class: "btn btn-outline-success my-2 my-sm-0" %>
          <br>
       </div>
     </div>
