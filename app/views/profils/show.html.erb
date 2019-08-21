@@ -123,7 +123,7 @@
                         <%= f.input :model %>
                         <%= f.input :level, collection: Guitar::LEVEL %>
                         <%= f.input :brand %>
-                        <%= f.input :genre %>
+                        <%= f.input :genre, collection: Guitar::GENRE %>
                         <%= f.input :price_per_day %>
                         <%#= f.input :photo_cache, as: :hidden %>
                         <%= f.submit class: "btn btn-outline-danger my-2" %>

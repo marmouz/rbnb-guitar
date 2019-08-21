@@ -4,6 +4,7 @@ class Guitar < ApplicationRecord
   belongs_to :user
   has_many :bookings
 
-  validates :model, :brand, :genre, :price_per_day, presence: true
+  validates :model, :brand, :price_per_day, presence: true
   validates :level, inclusion: { in: LEVEL }
+  validates :genre, inclusion: { in: GENRE }
 end

@@ -9,14 +9,16 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.guitar = Guitar.find(params[:guitar_id])
-    @booking.save
-    # redirect to booking_path(id: @booking.id)
+    console
+    @booking.save!
+    redirect_to booking_path(@booking.id)
   end
 
   def destroy

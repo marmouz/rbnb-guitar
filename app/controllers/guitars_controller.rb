@@ -4,7 +4,7 @@ class GuitarsController < ApplicationController
 
   def index
     if params[:genre].present?
-      @guitars = Guitar.where("genre ILIKE ?", "%#(params[:genre]}%")
+      @guitars = Guitar.where("genre ILIKE ?", "%#{params[:genre]}%")
     else
       @guitars = Guitar.all
     end
