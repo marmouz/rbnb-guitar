@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.guitar = Guitar.find(params[:guitar_id])
-    console
     @booking.save!
     redirect_to booking_path(@booking.id)
   end
