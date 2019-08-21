@@ -3,11 +3,16 @@ class GuitarsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @guitars = Guitar.all
+    if params[:genre].present?
+      @guitars = Guitar.where("genre ILIKE ?", "%#(params[:genre]}%")
+    else
+      @guitars = Guitar.all
+    end
   end
 
   def show
     @user = @guitar.user
+    @booking = Booking.new
   end
 
   def new
