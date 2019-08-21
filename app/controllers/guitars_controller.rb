@@ -17,11 +17,12 @@ class GuitarsController < ApplicationController
   def create
     @guitar = Guitar.new(guitar_params)
     @guitar.user = current_user
-    # if @guitar.save
-    #   redirect_to @guitar
-    # else
-    #   render :new
-    # end
+    @guitar.save
+    if @guitar.save
+      redirect_to @guitars
+    else
+      render :show
+    end
   end
 
   def edit
