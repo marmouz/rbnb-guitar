@@ -8,6 +8,7 @@ class GuitarsController < ApplicationController
 
   def show
     @user = @guitar.user
+    @booking = Booking.new
   end
 
   def new

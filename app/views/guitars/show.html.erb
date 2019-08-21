@@ -17,9 +17,11 @@
       <div class="calendar-card flex-grow-1">
         <h2>Book a period of time</h2>
         <p>Please check below the availability dates of this guitar:</p>
-        <%= image_tag("calendar-en-dur.png", alt: "calendar",  class: "img-calendar mx-auto d-block") %>
-        <br>
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0"> Book period </button>
+        <%= simple_form_for [@guitar,@booking], method: "get" do |f| %>
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.button :submit, "Go", class: "btn btn-outline-success my-2 my-sm-0" %>
+        <% end %>
          <br>
       </div>
     </div>
@@ -76,4 +78,15 @@
 
 </div>
 
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Flatpickr Demo</h2>
+
+    <%= simple_form_for :search, method: "get" do |f| %>
+      <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
