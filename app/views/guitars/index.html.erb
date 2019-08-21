@@ -1,4 +1,5 @@
   <div class="container">
+    <%= link_to "> Home", root_path, class: "site-breadcrumb d-block" %>
     <div class="row">
       <div class="col-12 d-flex">
         <div class="nav_mid">
@@ -8,6 +9,7 @@
           <p><i class="far fa-square"></i> Niveau</p>
           <p><i class="far fa-square"></i> Genre Musical</p>
           <p><i class="far fa-square"></i> Prix</p>
+          <p><i class="far fa-square"></i> Ville</p>
         </div>
 
         <div class="chat_disp">
@@ -18,7 +20,7 @@
               <div class="card-product-infos">
                 <h2><%= guitar.brand %>:<%= guitar.model %></h2>
                 <p>Série Vintera, Corps en aulne, Manche vissé en aulne, Touche en pau ferro, Profil du manche: Modern C, Repères "points" blancs, 22 frettes Medium Jumbo, Sillet en os synthétique, Largeur au sillet: 42 mm (1,65"), Diapason: 610 mm (24,02"), Rayon de la touche: 241 mm (9,49")</p>
-                <p class="price">99 €</p>
+                <p class="price"><%= guitar.price_per_day %> €/d</p>
                 <%= link_to  "Show", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0" %>
               </div>
             </div>

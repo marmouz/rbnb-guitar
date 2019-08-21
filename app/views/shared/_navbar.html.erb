@@ -1,0 +1,22 @@
+<nav class="navbar sticky-top navbar-light bg-white">
+  <%= link_to "GuitaRnb",root_path , class: "navbar-brand" %>
+  <div class="d-flex">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>
+      <div class="ml-5">
+      <% if user_signed_in? %>
+      <div class="d-flex justify-content-between">
+        <p class="mb-0 text-danger font-weight-bold mr-2"> Salut
+          <%= link_to current_user.first_name.capitalize, profil_path(current_user) %> !</p>
+
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary " %>
+      </div>
+      <% else %>
+        <%= link_to "Login/Sign up", new_user_registration_path ,class: "btn btn-outline-primary my-2 my-sm-0 mx-3" %>
+      <% end %>
+      </div>
+
+  </div>
+</nav>
