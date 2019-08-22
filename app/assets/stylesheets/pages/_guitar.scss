@@ -56,8 +56,9 @@
 .price {
   font-size: 22px !important;
   font-weight: bold;
-  position: relative;
-  left: 90%;
+  position: absolute;
+  left: 88%;
+  bottom:10%;
 }
 
 #bck-list {

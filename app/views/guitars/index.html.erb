@@ -1,27 +1,16 @@
   <div class="container">
-    <%= link_to "> Home", root_path, class: "site-breadcrumb d-block" %>
     <div class="row">
       <div class="col-12 d-flex">
-        <div class="nav_mid">
-          <h3>Filtres</h3>
-          <p><i class="far fa-square"></i> Modèle</p>
-          <p><i class="far fa-square"></i> Marque</p>
-          <p><i class="far fa-square"></i> Niveau</p>
-          <p><i class="far fa-square"></i> Genre Musical</p>
-          <p><i class="far fa-square"></i> Prix</p>
-          <p><i class="far fa-square"></i> Ville</p>
-        </div>
-
-        <div class="chat_disp">
-          <h2 class="stick chat_header border-top-1"><i class="fas fa-guitar"></i> Guitares !</h2>
+        <div>
+          <h2 class="stick chat_header border-top-1"><i class="fas fa-guitar"></i> > Toutes les guitares <%= @title_inject %> !</h2>
           <% @guitars.each do |guitar| %>
             <div class="card-product">
               <%= cl_image_tag guitar.photo, height: 150, width: 150, crop: :fill,class: "card-product-image" %>
               <div class="card-product-infos">
                 <h2><%= guitar.brand %>:<%= guitar.model %></h2>
                 <p><%= guitar.description %></p>
-                <p class="price"><%= guitar.price_per_day %> €/d</p>
-                <%= link_to  "Show", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0" %>
+                <p class="price"><%= guitar.price_per_day %> €/jour</p>
+                <%= link_to  "Show", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0", id: "btn-show-index" %>
               </div>
             </div>
           <% end %>
