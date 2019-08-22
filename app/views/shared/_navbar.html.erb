@@ -8,8 +8,8 @@
       <div class="ml-5">
       <% if user_signed_in? %>
       <div class="d-flex justify-content-between">
-        <p class="mb-0 text-danger font-weight-bold mr-2"> Salut
-          <%= link_to current_user.first_name.capitalize, profil_path(current_user) %> !</p>
+        <p class="mb-0 font-weight-bold mr-2"> Salut
+          <%= link_to current_user.first_name.capitalize, profil_path(current_user), id: "user-name" %> !</p>
 
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary " %>
       </div>
