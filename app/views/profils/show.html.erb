@@ -10,10 +10,7 @@
         <h5>
             <%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %>
         </h5>
-        <h6>
-            Niveau Expert // Style : Rock n' Roll
-        </h6>
-        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+        <p class="proile-rating"> RATING: <span><%#= @user.review.ratings.avergae %> /5</span></p>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -33,23 +30,20 @@
         </ul>
       </div>
     </div>
-        <div class="col-md-2">
-            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <div class="profile-work">
-              <p>HISTORIQUE DE COMMANDE</p>
+              <p class = "text-danger">DERNIERES COMMANDES</p>
               <% @user.bookings.last(2).each do |booking| %>
                 <ul>
-                  <li><strong><%= booking.guitar.brand %><%= booking.guitar.model %></strong></li>
-                  <li>Du <%= booking.start_date %> au <%= booking.end_date %></li>
+                  <li>Modèle:<strong> <%= booking.guitar.brand %> <%= booking.guitar.model %></strong></li>
+                  <li>Période: du <%= booking.start_date %> au <%= booking.end_date %></li>
                   <li>
-                    Par <%= booking.guitar.user.first_name.capitalize %> <%= booking.guitar.user.last_name.capitalize %>
+                    Loueur: <%= booking.guitar.user.first_name.capitalize %> <%= booking.guitar.user.last_name.capitalize %>
                   </li>
                   <% number_of_days = (booking.end_date - booking.start_date).to_i %>
-                  <li>Prix: <%= number_of_days * booking.guitar.price_per_day %></li>
+                  <li>Prix: <%= number_of_days * booking.guitar.price_per_day %> €</li>
                 </ul>
               <% end %>
             </div>
