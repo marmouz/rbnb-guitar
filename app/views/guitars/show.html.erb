@@ -17,8 +17,8 @@
         <h2>Book a period of time</h2>
         <p>Please check below the availability dates of this guitar:</p>
         <%= simple_form_for [@guitar,@booking], method: "post" do |f| %>
-          <%= f.input :start_date, required: false%>
-          <%= f.input :end_date, required: false %>
+          <%= f.input :start_date,as: :string, required: false, input_html: {class: "datepicker"}%>
+          <%= f.input :end_date,as: :string, required: false, input_html: {class: "datepicker"} %>
           <%= f.button :submit, "Go", class: "btn btn-outline-success my-2 my-sm-0" %>
         <% end %>
         <%#= link_to "Book now !", booking_path(@guitar.bookings[0]), class: "btn btn-outline-success my-2 my-sm-0" %>
