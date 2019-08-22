@@ -10,7 +10,7 @@
         <h5>
             <%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %>
         </h5>
-        <p class="proile-rating"> RATING: <span><%#= @user.review.ratings.avergae %> /5</span></p>
+        <p class="profile-rating"> RATING: <span><%#= @user.review.ratings.avergae %> /5</span></p>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -112,7 +112,7 @@
                     </div>
                       <% @user.guitars.each do |guitar| %>
                         <div class="card-product">
-                          <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-large" %>
+                          <%= cl_image_tag guitar.photo, height: 150, width: 150, crop: :fill,class: "card-product-image" %>
                           <div class="card-product-infos" style="width: 500px">
                             <p><strong>Modèle :</strong> "<%= guitar.model %>"</p>
                             <p><strong>Niveau :</strong> "<%= guitar.level %>"
@@ -136,7 +136,8 @@
                           <%= f.input :brand %>
                           <%= f.input :genre, collection: Guitar::GENRE %>
                           <%= f.input :price_per_day %>
-                          <%#= f.input :photo_cache, as: :hidden %>
+                          <%= f.input :photo %>
+                          <%= f.input :photo_cache, as: :hidden %>
                           <%= f.submit class: "btn btn-outline-danger my-2" %>
                         <% end %>
                       </div>
