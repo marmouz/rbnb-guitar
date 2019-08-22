@@ -16,7 +16,7 @@
           <h2 class="stick chat_header border-top-1"><i class="fas fa-guitar"></i> Guitares !</h2>
           <% @guitars.each do |guitar| %>
             <div class="card-product">
-              <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-large" %>
+              <%= cl_image_tag guitar.photo, height: 150, width: 150, crop: :fill,class: "card-product-image" %>
               <div class="card-product-infos">
                 <h2><%= guitar.brand %>:<%= guitar.model %></h2>
                 <p><%= guitar.description %></p>

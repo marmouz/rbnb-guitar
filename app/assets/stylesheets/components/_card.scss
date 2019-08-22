@@ -21,9 +21,12 @@
 }
 
 .card-product img {
-  height: 90%;
-  width: 140px;
-  object-fit: cover;
+  margin-left: 4px;
+}
+
+.card-product-image {
+  border: grey 1px solid;
+  border-radius:50%;
 }
 
 .card-product h2 {
