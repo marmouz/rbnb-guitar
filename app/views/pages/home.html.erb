@@ -32,12 +32,11 @@
         <% GUITAR_GENRE.each do |guitar| %>
         <%= link_to guitars_path(genre: guitar[:name]) do %>
             <div class="card media d-flex flex-column align-items-center" style="width: 10rem;">
-                <%= image_tag (guitar[:photo_path]), class: "card-img-top img-fit", style: "height: 7rem"%>
+                <%= image_tag (guitar[:photo_path]), class: "", style: "height: 7rem"%>
                 <div class="card-body"><p class="card-text"><%= guitar[:name].capitalize %></p></div>
             </div>
             <% end %>
         <% end %>
-
       </div>
     </div>
   </div>

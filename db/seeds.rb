@@ -89,18 +89,18 @@ guitar10.save!
 
 
 booking1 = Booking.new(end_date: Date.today + 5, start_date:Date.today)
-booking1.user = user1
+booking1.user = user2
 booking1.guitar = guitar1
 booking1.save!
 
 booking2 = Booking.new(end_date: Date.today + 2, start_date: Date.today)
-booking2.user = user2
+booking2.user = user1
 booking2.guitar = guitar6
 booking2.save!
 
 booking3 = Booking.new(end_date: Date.today + 9, start_date:Date.today + 7)
-booking3.user = user1
-booking3.guitar = guitar1
+booking3.user = user2
+booking3.guitar = guitar2
 booking3.save!
 
 
