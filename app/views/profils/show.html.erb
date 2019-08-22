@@ -16,14 +16,20 @@
         <p class="proile-rating">RANKINGS : <span>8/10</span></p>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false"><%= @user.first_name.capitalize  %>' guitars</a>
+                <a class="nav-link text-danger" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false"><%= @user.first_name.capitalize  %>' guitars</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
-            </li>
+            <% if current_user == @user %>
+              <li class="nav-item">
+                  <a class="nav-link text-danger" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
+              </li>
+            <%else%>
+              <li class="nav-item">
+                  <a class="nav-link d-none" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
+              </li>
+            <% end %>
         </ul>
       </div>
     </div>
@@ -34,8 +40,18 @@
     <div class="row">
         <div class="col-md-4">
             <div class="profile-work">
-              <p>HISTORIQUE DES COMMANDES</p>
-              <p>> date commande nounours en dur <br>> modèle guitare commande nounours<br> > prix commande nounours<br>> loueur commande nounours</p>
+              <p>HISTORIQUE DE COMMANDE</p>
+              <% @user.bookings.last(2).each do |booking| %>
+                <ul>
+                  <li><strong><%= booking.guitar.brand %><%= booking.guitar.model %></strong></li>
+                  <li>Du <%= booking.start_date %> au <%= booking.end_date %></li>
+                  <li>
+                    Par <%= booking.guitar.user.first_name.capitalize %> <%= booking.guitar.user.last_name.capitalize %>
+                  </li>
+                  <% number_of_days = (booking.end_date - booking.start_date).to_i %>
+                  <li>Prix: <%= number_of_days * booking.guitar.price_per_day %></li>
+                </ul>
+              <% end %>
             </div>
         </div>
         <div class="col-md-8">
@@ -116,21 +132,23 @@
                       <% end %>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <%= simple_form_for @guitar do |f| %>
-                        <%= f.input :model %>
-                        <%= f.input :level, collection: Guitar::LEVEL %>
-                        <%= f.input :brand %>
-                        <%= f.input :genre, collection: Guitar::GENRE %>
-                        <%= f.input :price_per_day %>
-                        <%#= f.input :photo_cache, as: :hidden %>
-                        <%= f.submit class: "btn btn-outline-danger my-2" %>
-                      <% end %>
+                <% if current_user == @user %>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <%= simple_form_for @guitar do |f| %>
+                          <%= f.input :model %>
+                          <%= f.input :level, collection: Guitar::LEVEL %>
+                          <%= f.input :brand %>
+                          <%= f.input :genre, collection: Guitar::GENRE %>
+                          <%= f.input :price_per_day %>
+                          <%#= f.input :photo_cache, as: :hidden %>
+                          <%= f.submit class: "btn btn-outline-danger my-2" %>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
             </div>
         </div>
     </div>
