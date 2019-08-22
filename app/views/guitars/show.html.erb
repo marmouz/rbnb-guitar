@@ -7,8 +7,8 @@
               <div><h1><%= @guitar.brand %> <%= @guitar.model %> </h1></div>
               <div class="guitar-price"><p> <%=  @guitar.price_per_day %> €/day</p></div>
             </div>
-            <div class="img">
-              <%= image_tag("https://www.pourlesmusiciens.com/medias/45/cort-earth-100-dreadnought-epicea-acajou-large-3-66889.jpg") %>
+            <div class="text-center">
+              <%= cl_image_tag @guitar.photo, width: 450, height: 450, crop: :fill %>
             </div>
         </div>
     </div>
@@ -17,8 +17,11 @@
         <h2>Book a period of time</h2>
         <p>Please check below the availability dates of this guitar:</p>
         <%= simple_form_for [@guitar,@booking], method: "post" do |f| %>
-          <%= f.input :start_date,as: :string, required: false, input_html: {class: "datepicker"}%>
-          <%= f.input :end_date,as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :start_date,
+                      as: :string,
+                      required: false,
+                      input_html: {id: "range_start" ,class: "datepicker"}%>
+          <%= f.input :end_date,as: :string, required: false, input_html: {id: "range_end", class: "datepicker"} %>
           <%= f.button :submit, "Go", class: "btn btn-outline-success my-2 my-sm-0" %>
         <% end %>
         <%#= link_to "Book now !", booking_path(@guitar.bookings[0]), class: "btn btn-outline-success my-2 my-sm-0" %>
@@ -40,19 +43,15 @@
         </ul>
          <br>
         <h2>Description</h2>
-        <p>
-          La guitare acoustique folk type Dreadnought CORT Earth 100 (ref E100TF) est une des guitares acoustiques table massive favorite des musiciens. Avec sa rosace "Wood-Ring" ,le dos et les eclisses en Acajou laminé, cette guitare acoustique possède un belle esthétique. De construction robuste, la guitare Earth 100 peut être emmenée partout sans crainte.
-        </p>
-        <p>
-          Concernant le jeu du musicien, la Earth 100 possède un manche très confortable et est une guitare acoustique corde acier au son assez équilibrée, clair et brillant grâce à sa table en épicéa massif. Cette sonorité neutre rend donc cette guitare polyvalente et idéale pour accompagner un chant par exemple.
-        </p>
+        <p><%= @guitar.description %></p>
       </div>
     </div>
     <div class="col-5">
       <div class="user-card">
         <h2>Owner profile</h2>
         <div class="d-flex align-items-top">
-          <%= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "250x250", class: "avatar-bordered" %>
+          <%= cl_image_tag @user.photo, height: 250, width: 250, crop: :fill, class: "avatar-bordered" %>
+          <%#= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "250x250", class: "avatar-bordered" %>
           <div class="user-name-address">
             <p> Name: <%=  @user.first_name.capitalize %> <%=  @user.last_name.capitalize %></p>
             <p> Address: <%=  @user.address %></p>
@@ -77,6 +76,6 @@
       </div>
     </div>
   </div>
-
+  <div id="booking-form-div" data-bookings ="<%= @bookings_date.to_json %>">
+  </div>
 </div>
-

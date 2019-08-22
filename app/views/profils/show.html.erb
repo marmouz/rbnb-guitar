@@ -2,7 +2,7 @@
   <div class="row pt-3">
     <div class="col-md-4">
       <div class="text-center">
-        <%= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "200x200", class: "round" %>
+        <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill,class: "round" %>
       </div>
     </div>
     <div class="col-md-6">
