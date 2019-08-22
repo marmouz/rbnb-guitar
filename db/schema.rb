@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_124222) do
   create_table "guitars", force: :cascade do |t|
     t.bigint "user_id"
     t.string "model"
-    t.string "level"
+    t.string "level", default: "beginner"
     t.string "brand"
     t.string "genre"
     t.integer "price_per_day"
