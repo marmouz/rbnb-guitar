@@ -13,10 +13,10 @@ Guitar.destroy_all
 User.destroy_all
 puts "create 2 users"
 
-user1 = User.new(email: "nounours@gmail.com", password: "nounours", first_name: "nicolas", last_name:"schmoutz", address:"37 avenue Germaine, 59110 La Madeleine")
+user1 = User.new(email: "nounours@gmail.com", password: "nounours", first_name: "nicolas", last_name:"schmoutz", address:"11 rue du coteau", city: "Chaville", description: "Salut, c'est moi Nounours. Vous me reconnaissez ?! Ah ah, sacré Nounours ! Bien, un peu de sérieux, voulez-vous ? Ma passion dans la vie ? Le rock n'roll et les alcools forts ! Allez, Hasta la Vista babies !")
 user1.save!
 
-user2 = User.new(email: "faust@gmail.com", password: "lafaust", first_name: "faustine", last_name:"faustinier", address:"11 rue du coteau, 92370 Chaville")
+user2 = User.new(email: "faust@gmail.com", password: "lafaust", first_name: "faustine", last_name:"faustinier", address:"37 avenue Germaine", city: "La Madeleine", description: "Salut, c'est la Faust ! Bon, si c'est pour commencer à des aneries, c'est pas la peine ! Parceque des sexistes et des phallocrates comme vous, ça commence à bien faire ! A ce sujet, saviez vous que Faust était une oeuvre du poète allemand Friedriech Van Goethe ? Allez tchao les nullos !")
 user2.save!
 
 puts "create guitar"
