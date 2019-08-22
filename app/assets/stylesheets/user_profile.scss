@@ -77,6 +77,10 @@
 }
 .profile-work ul{
     list-style: none;
+    padding-inline-start: 0;
+    & li {
+
+    }
 }
 .profile-tab label{
     font-weight: 600;
