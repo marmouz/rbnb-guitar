@@ -13,6 +13,11 @@ class GuitarsController < ApplicationController
   def show
     @user = @guitar.user
     @booking = Booking.new
+    @bookings = @guitar.bookings
+    @bookings_date = @bookings.map do |booking|
+      var = { from: booking.start_date, to: booking.end_date }
+      p var
+    end
   end
 
   def new
