@@ -50,7 +50,8 @@
       <div class="user-card">
         <h2>Owner profile</h2>
         <div class="d-flex align-items-top">
-          <%= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "250x250", class: "avatar-bordered" %>
+          <%= cl_image_tag @user.photo, height: 250, width: 250, crop: :fill, class: "avatar-bordered" %>
+          <%#= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "250x250", class: "avatar-bordered" %>
           <div class="user-name-address">
             <p> Name: <%=  @user.first_name.capitalize %> <%=  @user.last_name.capitalize %></p>
             <p> Address: <%=  @user.address %></p>
