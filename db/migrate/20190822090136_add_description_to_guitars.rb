@@ -1,6 +1,6 @@
 class AddDescriptionToGuitars < ActiveRecord::Migration[5.2]
   def change
-    add_column :users, :description, :string
-    add_column :users, :photo, :string
+    add_column :guitars, :description, :string
+    add_column :guitars, :photo, :string
   end
 end
