@@ -1,6 +1,6 @@
 class Guitar < ApplicationRecord
   LEVEL = ["beginner", "middle", "expert"]
-  GENRE = ["bass", "acoustic", "electric", "classic", "12-strings"]
+  GENRE = ["basse", "accoustique", "electrique", "classique", "12 cordes"]
   belongs_to :user
   has_many :bookings
 

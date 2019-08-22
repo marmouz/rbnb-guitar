@@ -18,6 +18,8 @@
   display: flex;
   align-items: center;
   margin: 10px;
+  position: relative;
+
 }
 
 .card-product img {
@@ -47,10 +49,6 @@
   padding: 16px;
 }
 
-.card-product-infos{
-  position: relative;
-}
-
 .card-product-infos #btn-show-profil {
   position: absolute;
   bottom: 10px;
@@ -58,3 +56,8 @@
 }
 
 
+.card-product-infos #btn-show-index {
+  position: absolute;
+  bottom: 10px;
+  left: 16%;
+}

@@ -5,9 +5,11 @@ class GuitarsController < ApplicationController
   def index
     if params[:genre].present?
       @guitars = Guitar.where("genre ILIKE ?", "%#{params[:genre]}%")
+      @title_inject = "de type #{params[:genre]}"
     elsif params[:city].present?
       users = User.where("city ILIKE ?", "%#{params[:city]}%")
       @guitars = recup_guitar(users)
+      @title_inject = "à #{params[:city].capitalize}"
     else
       @guitars = Guitar.all
     end
@@ -58,7 +60,7 @@ class GuitarsController < ApplicationController
   end
 
   def guitar_params
-    params.require(:guitar).permit(:model, :level, :brand, :type, :price_per_day)
+    params.require(:guitar).permit(:model, :level, :brand, :genre, :price_per_day)
   end
 
   def recup_guitar(users)
