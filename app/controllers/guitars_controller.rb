@@ -10,9 +10,11 @@ class GuitarsController < ApplicationController
       users = User.where("city ILIKE ?", "%#{params[:city]}%")
       @guitars = recup_guitar(users)
       @title_inject = "à #{params[:city].capitalize}"
+
     else
       @guitars = Guitar.all
     end
+    @guitars = @guitars.where.not(user: current_user) if user_signed_in?
   end
 
   def show
@@ -20,8 +22,7 @@ class GuitarsController < ApplicationController
     @booking = Booking.new
     @bookings = @guitar.bookings
     @bookings_date = @bookings.map do |booking|
-      var = { from: booking.start_date, to: booking.end_date }
-      p var
+      { from: booking.start_date, to: booking.end_date }
     end
   end
 
@@ -33,10 +34,10 @@ class GuitarsController < ApplicationController
     @guitar = Guitar.new(guitar_params)
     @guitar.user = current_user
     @guitar.save
-    if @guitar.save
-      redirect_to @guitars
+    if @guitar.save!
+      redirect_to guitars_path
     else
-      render :show
+      redirect_to profil_path(current_user)
     end
   end
 
@@ -60,7 +61,7 @@ class GuitarsController < ApplicationController
   end
 
   def guitar_params
-    params.require(:guitar).permit(:model, :level, :brand, :genre, :price_per_day)
+    params.require(:guitar).permit(:model, :level, :brand, :genre, :photo, :description, :price_per_day)
   end
 
   def recup_guitar(users)
