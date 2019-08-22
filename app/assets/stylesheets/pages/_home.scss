@@ -1,1 +1,18 @@
 // Specific CSS for your home-page
+.form-city {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+}
+
+.card_link a{
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size:1.2em;
+  &a:hover {
+    text-decoration: none;
+  }
+}
