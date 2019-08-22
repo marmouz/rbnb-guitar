@@ -16,10 +16,10 @@
           <h2 class="stick chat_header border-top-1"><i class="fas fa-guitar"></i> Guitares !</h2>
           <% @guitars.each do |guitar| %>
             <div class="card-product">
-              <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-large" %>
+              <%= cl_image_tag guitar.photo, height: 150, width: 150, crop: :fill,class: "card-product-image" %>
               <div class="card-product-infos">
                 <h2><%= guitar.brand %>:<%= guitar.model %></h2>
-                <p>Série Vintera, Corps en aulne, Manche vissé en aulne, Touche en pau ferro, Profil du manche: Modern C, Repères "points" blancs, 22 frettes Medium Jumbo, Sillet en os synthétique, Largeur au sillet: 42 mm (1,65"), Diapason: 610 mm (24,02"), Rayon de la touche: 241 mm (9,49")</p>
+                <p><%= guitar.description %></p>
                 <p class="price"><%= guitar.price_per_day %> €/d</p>
                 <%= link_to  "Show", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0" %>
               </div>

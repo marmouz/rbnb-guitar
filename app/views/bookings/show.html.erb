@@ -26,9 +26,9 @@
             </div>
           </div>
         </td>
-        <td><p><strong>Nom : </strong><%= @booking.user.first_name.capitalize %> <%= @booking.user.last_name.capitalize %>
-          <p><strong>Email : </strong><%= @booking.user.email%></p>
-          <p><strong>Adresse : </strong><%= @booking.user.address %></p>
+        <td><p><strong>Nom : </strong><%= @booking.guitar.user.first_name.capitalize %> <%= @booking.guitar.user.last_name.capitalize %>
+          <p><strong>Email : </strong><%= @booking.guitar.user.email%></p>
+          <p><strong>Adresse : </strong><%= @booking.guitar.user.address %></p>
         </td>
         <td data-th="Quantity">
           <p class="text-center"><%= number_of_days = (@booking.end_date - @booking.start_date).to_i %></p>
