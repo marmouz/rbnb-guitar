@@ -104,9 +104,16 @@
                           <div class="card-body">
                             <blockquote class="blockquote mb-0">
                               <p>
-                                <strong><%= review.user.first_name.capitalize %></strong> a loué la <%= review.booking.guitar.brand %>  <%= review.booking.guitar.model %> : <%= review.content %>
+                                <% review.rating.times do %>
+                                <i class="fa fa-star gold"></i>
+                                <% end %>
+                                <% (5 - review.rating).times do %>
+                                <i class="far fa-star gold"></i>
+                                <% end %>
                               </p>
-                              <footer class="blockquote-footer"> <%= review.rating %> /5</footer>
+                              <p>
+                                <strong><%= review.user.first_name.capitalize %></strong> a loué la <%= review.booking.guitar.brand %>  <%= review.booking.guitar.model %> : <em>"<%= review.content %></em>"
+                              </p>
                             </blockquote>
                           </div>
                         <% end %>
