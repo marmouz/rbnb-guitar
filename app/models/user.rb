@@ -9,4 +9,9 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def my_guitar_reviews
+    test = self.guitars.map { |guitar| guitar.bookings.map { |booking| booking.reviews }}
+    test.flatten
+  end
 end

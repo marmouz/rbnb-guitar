@@ -7,10 +7,9 @@ class GuitarsController < ApplicationController
       @guitars = Guitar.where("genre ILIKE ?", "%#{params[:genre]}%")
       @title_inject = "de type #{params[:genre]}"
     elsif params[:city].present?
-      users = User.where("city ILIKE ?", "%#{params[:city]}%")
-      @guitars = recup_guitar(users)
+      sql_query = " \ users.city ILIKE :query \ "
+      @guitars = Guitar.joins(:user).where(sql_query, query: "%#{params[:city]}%")
       @title_inject = "à #{params[:city].capitalize}"
-
     else
       @guitars = Guitar.all
     end
@@ -41,14 +40,6 @@ class GuitarsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    @guitar.update(guitar_params)
-    # redirect_to @guitar
-  end
-
   def destroy
     @guitar.destroy
     # redirect_to @guitar
@@ -62,15 +53,5 @@ class GuitarsController < ApplicationController
 
   def guitar_params
     params.require(:guitar).permit(:model, :level, :brand, :genre, :photo, :description, :price_per_day)
-  end
-
-  def recup_guitar(users)
-    guitars = []
-    users.each do |user|
-      user.guitars.each do |guitar|
-        guitars << guitar
-      end
-    end
-    return guitars
   end
 end

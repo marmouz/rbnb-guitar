@@ -2,26 +2,28 @@
   <div class="row pt-3">
     <div class="col-md-4">
       <div class="text-center">
-        <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill,class: "round" %>
+        <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill, class: " border border-danger rounded-circle" %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="profile-head">
-        <h5>
+        <h1>
             <%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %>
-        </h5>
-        <%#= average = (@user.reviews.sum {|review| review.rating }) / @user.reviews.size %>
-        <p class="profile-rating"> RATING: <span> <%#= average %>/5</span></p>
+        </h1>
+        <% average = (@reviews.sum {|review| review.rating }) / @reviews.size.to_f %>
+        <div class="profile-rating my-4">
+          <h5>NOTE MOYENNE: <span>  <%= average %>/5   </span></h5>
+        </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Présentation</a>
+                <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Avis</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-danger" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false">Les guitares de <%= @user.first_name.capitalize  %></a>
             </li>
             <% if current_user == @user %>
               <li class="nav-item">
-                  <a class="nav-link text-danger" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Ajouter une guitare</a>
+                  <a class="nav-link text-danger" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Ajouter une guitare</a>
               </li>
             <%else%>
               <li class="nav-item">
@@ -33,7 +35,46 @@
     </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-5 profile-presentation">
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Name</label>
+              </div>
+              <div class="col-md-6">
+                  <p><%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                  <p><%= @user.email %></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Adresse</label>
+              </div>
+              <div class="col-md-6">
+                  <p><%= @user.address %></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Ville</label>
+              </div>
+              <div class="col-md-6">
+                  <p><%= @user.city %></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <label>Présentation</label><br/>
+                  <p><%= @user.description %></p>
+              </div>
+          </div>
+          <% if @user == current_user %>
             <div class="profile-work">
               <p class = "text-danger">DERNIERES COMMANDES</p>
               <% @user.bookings.last(2).each do |booking| %>
@@ -48,61 +89,27 @@
                 </ul>
               <% end %>
             </div>
+          <% end %>
         </div>
         <div class="col-md-8">
-            <div class="tab-content profile-tab" id="myTabContent">
+            <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="row">
-                      <div class="col-md-6">
-                          <label>User Id</label>
-                      </div>
-                      <div class="col-md-6">
-                          <p>#<%= @user.id %></p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                          <label>Name</label>
-                      </div>
-                      <div class="col-md-6">
-                          <p><%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %></p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                          <label>Email</label>
-                      </div>
-                      <div class="col-md-6">
-                          <p><%= @user.email %></p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                          <label>Adresse</label>
-                      </div>
-                      <div class="col-md-6">
-                          <p><%= @user.address %></p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                          <label>Ville</label>
-                      </div>
-                      <div class="col-md-6">
-                          <p><%= @user.city %></p>
-                      </div>
-                  </div>
-                  <div class="row">
                       <div class="col-md-12">
-                          <label>Présentation</label><br/>
-                          <p><%= @user.description %></p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <label>Reviews</label><br/>
-                          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                          <p>"Ceci est une réview en dur qu'il conviendra de créer en db, via l'utilitaire seed, notamment."</p>
+                        <h4>Reviews</h4>
+                        <% @reviews.last(2).each do |review| %>
+                          <div class="card-header text-danger">
+                            Le <%= review.booking.start_date %>
+                          </div>
+                          <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                              <p>
+                                <strong><%= review.user.first_name.capitalize %></strong> a loué la <%= review.booking.guitar.brand %>  <%= review.booking.guitar.model %> : <%= review.content %>
+                              </p>
+                              <footer class="blockquote-footer"> <%= review.rating %> /5</footer>
+                            </blockquote>
+                          </div>
+                        <% end %>
                       </div>
                   </div>
                 </div>
