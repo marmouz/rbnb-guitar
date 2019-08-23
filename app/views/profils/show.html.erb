@@ -100,9 +100,12 @@
                   </div>
                   <div class="row">
                       <div class="col-md-12">
-                          <label>Reviews</label><br/>
-                          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                          <p>"Ceci est une réview en dur qu'il conviendra de créer en db, via l'utilitaire seed, notamment."</p>
+                        <label>Reviews</label><br/>
+                         <!--  <i class="far fa-star"></i> -->
+                        <% @reviews.last(2).each do |review| %>
+                          <p><strong><%= review.user.first_name.capitalize %></strong> a loué la <%= review.booking.guitar.brand %>  <%= review.booking.guitar.model %> : <%= review.content %></p>
+                          <p><%= review.rating %> /5</p>
+                        <% end %>
                       </div>
                   </div>
                 </div>
