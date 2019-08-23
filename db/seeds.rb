@@ -18,7 +18,7 @@ url0 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1566478559/ours-grizz
 user1.remote_photo_url = url0
 user1.save!
 
-user2 = User.new(email: "faust@gmail.com", password: "lafaust", first_name: "faustine", last_name:"faustinier", address:"37 avenue Germaine", city: "La Madeleine", description: "Salut, c'est la Faust ! Bon, si c'est pour commencer à des aneries, c'est pas la peine ! Parceque des sexistes et des phallocrates comme vous, ça commence à bien faire ! A ce sujet, saviez vous que Faust était une oeuvre du poète allemand Friedriech Van Goethe ? Allez tchao les nullos !")
+user2 = User.new(email: "faust@gmail.com", password: "lafaust", first_name: "faustine", last_name:"faustinier", address:"37 avenue Germaine", city: "La Madeleine", description: "Salut, c'est la Faust ! Bon, si c'est pour commencer à dire des aneries, c'est pas la peine ! Parceque des sexistes et des phallocrates comme vous, ça commence à bien faire ! A ce sujet, saviez vous que Faust était une oeuvre du poète allemand Friedriech Van Goethe ? Allez tchao les nullos !")
 url00 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1565970194/ylri2o76agtzybaptiir.jpg"
 user2.remote_photo_url = url00
 user2.save!
@@ -108,15 +108,13 @@ booking3.save!
 puts "create reviews"
 
 review1 = Review.new(rating: 4, content: "Personne de confiance qui remplit bien sa tâche de conseiller, même pour les musiciens occasionnels.")
-review1.user = user2
+review1.user = user1
 review1.booking = booking2
 review1.save!
-
-review2 = Review.new(rating: 5, content: "Très satisfait de la Fender que j'ai pu louer. J'ai reçu de bons conseils.")
-review2.user = user1
+review2 = Review.new(rating: 5, content: "Très satisfaite de la Fender que j'ai pu louer. J'ai reçu de bons conseils.")
+review2.user = user2
 review2.booking = booking1
 review2.save!
-
 review3 = Review.new(rating: 2, content: "Niveau conseils, ça va, c'est correct. Mais alors les prix sont excessifs...")
 review3.user = user2
 review3.booking = booking3

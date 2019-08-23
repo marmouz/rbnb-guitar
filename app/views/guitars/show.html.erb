@@ -1,6 +1,7 @@
 <div class="container">
-<%= link_to "> Guitar list", guitars_path,id: "bck-list"%>
-  <div class="row d-flex justify-content-center">
+  <%= console %>
+<%= link_to "> Guitar list", guitars_path%>
+  <div class="row d-flex justify-content-center" style="margin-top: 10px;">
     <div class="col-7 mb-3">
         <div class="guitar-presentation">
             <div class="title-price d-flex justify-content-between">
@@ -14,7 +15,7 @@
     </div>
     <div class="col-5 mb-3">
       <div class="calendar-card">
-        <h1 class="mb-3 text-success">RESERVEZ</h2>
+        <h1 class="mb-10">RESERVEZ-MOI</h2>
         <div>
           <%= simple_form_for [@guitar,@booking], method: "post" do |f| %>
             <%= f.input :start_date,label: "Date de début",
@@ -22,7 +23,7 @@
                         required: false,
                         input_html: {id: "range_start" ,class: "datepicker"}%>
             <%= f.input :end_date,as: :string, label: "Date de fin", required: false, input_html: {id: "range_end", class: "datepicker"} %>
-            <%= f.button :submit, "Go", class: "btn btn-outline-success my-2 my-sm-0" %>
+            <%= f.button :submit, "Louer !", class: "btn btn-outline-success my-2 my-sm-0 center" %>
           <% end %>
         </div>
       </div>
@@ -49,22 +50,31 @@
       <div class="user-card">
         <h2>Profil</h2>
         <div class="d-flex align-items-center justify-content-around">
-          <%= cl_image_tag @user.photo, height: 250, width: 250, crop: :fill, class: "avatar-bordered" %>
+          <%= cl_image_tag @user.photo, height: 300, width: 300, crop: :fill, class: "avatar-bordered" %>
           <div class="user-name-address">
-            <p> <strong>Nom:</strong> <%=  @user.first_name.capitalize %> <%=  @user.last_name.capitalize %></p>
-            <p> <strong>Adresse:</strong> <%=  @user.address %></p>
-            <p> <strong>Contact:</strong> <%=  @user.email %></p>
+            <p> <strong>Nom : </strong><%= link_to "#{@user.first_name.capitalize} #{@user.last_name.capitalize}", profil_path(@user) %></p>
+
+
+
+              <!-- <%#=  @user.first_name.capitalize %> <%#=  @user.last_name.capitalize %></p> -->
+            <p> <strong>Adresse :</strong> <%=  @user.address %>, <%=  @user.city %></p>
+            <p> <strong>Contact :</strong> <%=  @user.email %></p>
           </div>
         </div>
-        <h2>Commentaires</h2>
+        <h2>Derniers commentaires</h2>
           <div>
-              <% 5.times do %>
+            <% @user.reviews.last(2).each do |review| %>
+              <% review.rating.times do %>
               <i class="fa fa-star gold"></i>
               <% end %>
+              <% (5-review.rating).times do %>
+              <i class="far fa-star gold"></i>
+              <% end %>
           </div>
-        <div class="review">
-          <p>"Sed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent"</p>
-        </div>
+          <div class="review">
+            <p>"<%= review.content %>"</p>
+            <% end %>
+          </div>
         <div class="mx-auto" style="width: 150px;">
           <%= link_to profil_path(@user), class: "btn btn-outline-success my-2 my-sm-0" do %>
             See <%= @user.first_name.capitalize %> profile
