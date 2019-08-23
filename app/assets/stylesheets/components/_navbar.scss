@@ -2,13 +2,12 @@
   height: 100px;
   font-size: 1.5em;
 }
-.navbar-brand{
+#brand-guitarnb {
   font-size: 1.5em;
+  color: #a32222;
+  font-weight: bold;
 }
 
-.navbar a {
-  color: black;
-}
 
 #user-name:hover {
     text-decoration: none;

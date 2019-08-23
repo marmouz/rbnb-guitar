@@ -19,7 +19,7 @@
                 <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Avis</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-danger" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false"><%= @user.first_name.capitalize  %>' guitars</a>
+                <a class="nav-link text-danger" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false">Les guitares de <%= @user.first_name.capitalize  %></a>
             </li>
             <% if current_user == @user %>
               <li class="nav-item">
@@ -27,7 +27,7 @@
               </li>
             <%else%>
               <li class="nav-item">
-                  <a class="nav-link d-none" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
+                  <a class="nav-link d-none" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Ajouter une guitare</a>
               </li>
             <% end %>
         </ul>
@@ -116,19 +116,22 @@
                 <div class="tab-pane fade" id="guitar" role="tabpanel" aria-labelledby="guitar-tab">
                   <div class="row">
                     <div class="col-md-12">
-                      <label><i class="fas fa-guitar"></i> Guitares Possedées : </label>
+                      <label><i class="fas fa-guitar"></i> Guitares : </label>
                     </div>
                       <% @user.guitars.each do |guitar| %>
                         <div class="card-product">
                           <%= cl_image_tag guitar.photo, height: 150, width: 150, crop: :fill,class: "card-product-image" %>
-                          <div class="card-product-infos" style="width: 500px">
-                            <p><strong>Modèle :</strong> "<%= guitar.model %>"</p>
-                            <p><strong>Niveau :</strong> "<%= guitar.level %>"
-                            <strong>Marque :</strong> "<%= guitar.brand %>"</p>
-                            <p><strong>Style :</strong> "<%= guitar.genre %>"
-                            <strong>Prix :</strong> "<%= guitar.price_per_day %> €"</p>
-                            <%= link_to  "Show", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0", id: "btn-show-profil" %>
-
+                          <div class="card-product-infos d-flex justify-content-between align-items-center" style="width: 500px">
+                            <div>
+                              <p><strong>Modèle :</strong> "<%= guitar.model %>"</p>
+                              <p><strong>Niveau :</strong> "<%= guitar.level %>"
+                              <strong>Marque :</strong> "<%= guitar.brand %>"</p>
+                              <p><strong>Style :</strong> "<%= guitar.genre %>"
+                              <strong>Prix :</strong> "<%= guitar.price_per_day %> €"</p>
+                            </div>
+                            <div>
+                              <%= link_to "Voir", guitar_path(guitar.id), class: "btn btn-outline-danger my-2 my-sm-0" %>
+                            </div>
                           </div>
                         </div>
                       <% end %>

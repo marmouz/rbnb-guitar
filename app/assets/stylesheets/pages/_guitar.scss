@@ -19,7 +19,7 @@
 .stick {
   position: sticky;
   top: 0;
-  background-color: white;
+  // background-color: white;
   z-index: 500;
 }
 
@@ -52,14 +52,6 @@
   overflow: auto;
 }
 
-
-.price {
-  font-size: 22px !important;
-  font-weight: bold;
-  position: absolute;
-  left: 88%;
-  bottom:10%;
-}
 
 #bck-list {
   font-size: 1.5em;
