@@ -109,17 +109,17 @@ booking3.save!
 puts "create reviews"
 
 review1 = Review.new(rating: 4, content: "Personne de confiance qui remplit bien sa tâche de conseiller, même pour les musiciens occasionnels.")
-review1.user = user2
+review1.user = user1
 review1.booking = booking2
 review1.save!
 
 review2 = Review.new(rating: 5, content: "Très satisfait de la Fender que j'ai pu louer. J'ai reçu de bons conseils.")
-review2.user = user1
+review2.user = user2
 review2.booking = booking1
 review2.save!
 
 review3 = Review.new(rating: 2, content: "Niveau conseils, ça va, c'est correct. Mais alors les prix sont excessifs...")
-review3.user = user1
+review3.user = user2
 review3.booking = booking3
 review3.save!
 
