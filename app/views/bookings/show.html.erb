@@ -14,9 +14,7 @@
         <td data-th="Product">
           <div class="row">
             <div class="col-sm-2 hidden-xs">
-
-              <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-xlarge" %>
-              <!-- <img src="http://placehold.it/100x100" alt="..." class="img-responsive"/> -->
+              <%= cl_image_tag @booking.guitar.photo, height: 100, width: 100, crop: :fill,class: "card-product-image" %>
             </div>
             <div class="col-sm-10">
               <h4 class="nomargin"><%= @booking.guitar.model %></h4>
@@ -26,9 +24,9 @@
             </div>
           </div>
         </td>
-        <td><p><strong>Nom : </strong><%= @booking.user.first_name.capitalize %> <%= @booking.user.last_name.capitalize %>
-          <p><strong>Email : </strong><%= @booking.user.email%></p>
-          <p><strong>Adresse : </strong><%= @booking.user.address %></p>
+        <td><p><strong>Nom : </strong><%= @booking.guitar.user.first_name.capitalize %> <%= @booking.guitar.user.last_name.capitalize %>
+          <p><strong>Email : </strong><%= @booking.guitar.user.email%></p>
+          <p><strong>Adresse : </strong><%= @booking.guitar.user.address %></p>
         </td>
         <td data-th="Quantity">
           <p class="text-center"><%= number_of_days = (@booking.end_date - @booking.start_date).to_i %></p>

@@ -1,33 +1,42 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://cdn.shopify.com/s/files/1/2062/6813/products/01-traveler-guitar-speedster-wine-red-front.jpg?v=1532190202);">
-  <div class="container">
-    <h1>GuitaRnb</h1>
-    <p>Rent a guitar around the world.</p>
+  <h1>GuitaRnb</h1>
+  <div class="container d-flex justify-content-center align-items-center h-100 m-0 mt-5">
+    <%= form_tag guitars_path, method: :get, class: "form-city h-100" do %>
+      <div>
+        <h4 class="text-light">Dans quelle ville souhaitez vous une guitare?</h2>
+        <%= text_field_tag :city,
+            params[:city],
+            class: "form-control form-control-lg",
+            placeholder: "Dans quelle ville ?"
+          %>
+      </div>
+      <%= submit_tag "GO", class: "btn btn-outline-light mt-4 px-4" %>
+    <% end -%>
   </div>
 </div>
 <div class="container">
   <div class="row justify-content-center mt-4">
     <div class="col-12 col-lg-10 ">
       <div>
-      <h1>Choose a guitar</h1>
-      <p>GuitaRnb suggests a whole list of guitars from great people all over the world. Check it out!</p>
-      <%= link_to "List", guitars_path, class: "btn btn-outline-danger my-2 my-sm-0 px-4"  %>
+        <h1>Choisissez une guitare</h1>
+        <p>GuitaRnb propose une liste complète de guitares de gens exceptionnels du monde entier. Vérifiez-le!</p>
+        <%= link_to "List", guitars_path, class: "btn btn-outline-danger my-2 my-sm-0 px-4"  %>
       </div>
       <div class="mt-3">
-      <h2>How it works</h2>
-      <p>La préoccupation de Nounours, La Faust et Marmouz ? Vous satisfaire toujours plus ! Grace à une activité séculaire de loueurs de matériels musicals, nous vous proposons par le truchement de l'application GuitaRnb de profiter du meilleur de l'instrument tout en gardant une indépendance qui vous est chère. Le principe ? Un utilisateur intermittant, désireux d'accroître ses modestes revenus met en location son instrument préféré, une guitare. Un nounours lambda qui souhaite louer ce bel instrument utilise la plateforme GuitaRnb et en fait la demande Online ! Amusant, non ? Vous voulez dire AMAZING ?! Ah ah, sacré nounours !!!</p>
+        <h2>Comment ca marche?</h2>
+        <p>La préoccupation de Nounours, La Faust et Marmouz ? Vous satisfaire toujours plus ! Grace à une activité séculaire de loueurs de matériels musicals, nous vous proposons par le truchement de l'application GuitaRnb de profiter du meilleur de l'instrument tout en gardant une indépendance qui vous est chère. Le principe ? Un utilisateur intermittant, désireux d'accroître ses modestes revenus met en location son instrument préféré, une guitare. Un nounours lambda qui souhaite louer ce bel instrument utilise la plateforme GuitaRnb et en fait la demande Online ! Amusant, non ? Vous voulez dire AMAZING ?! Ah ah, sacré nounours !!!</p>
       </div>
-      <h2>By genre</h2>
-      <div class="d-flex justify-content-between">
+      <h2>Guitare par genre</h2>
+      <div class="card_link d-flex justify-content-between">
 
         <% GUITAR_GENRE.each do |guitar| %>
         <%= link_to guitars_path(genre: guitar[:name]) do %>
-            <div class="card media" style="width: 10rem;">
-                <%= image_tag (guitar[:photo_path]), class: "card-img-top img-fit", style: "height: 7rem"%>
-                <div class="card-body"><p class="card-text"><%= guitar[:name] %></p></div>
+            <div class="card media d-flex flex-column align-items-center" style="width: 10rem;">
+                <%= image_tag (guitar[:photo_path]), class: "", style: "height: 7rem"%>
+                <div class="card-body"><p class="card-text"><%= guitar[:name].capitalize %></p></div>
             </div>
             <% end %>
         <% end %>
-
       </div>
     </div>
   </div>

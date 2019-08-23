@@ -2,7 +2,7 @@
   <div class="row pt-3">
     <div class="col-md-4">
       <div class="text-center">
-        <%= image_tag "https://www.coloriageetdessins.com/images/animaux/ours/ours-grizzly-10286-660x400.jpg", size: "200x200", class: "round" %>
+        <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill,class: "round" %>
       </div>
     </div>
     <div class="col-md-6">
@@ -10,32 +10,43 @@
         <h5>
             <%= @user.first_name.capitalize  %> <%= @user.last_name.capitalize  %>
         </h5>
-        <h6>
-            Niveau Expert // Style : Rock n' Roll
-        </h6>
-        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+        <%#= average = (@user.reviews.sum {|review| review.rating }) / @user.reviews.size %>
+        <p class="profile-rating"> RATING: <span> <%#= average %>/5</span></p>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                <a class="nav-link text-danger active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false"><%= @user.first_name.capitalize  %>' guitars</a>
+                <a class="nav-link text-danger" id="guitar-tab" data-toggle="tab" href="#guitar" role="tab" aria-controls="guitar" aria-selected="false"><%= @user.first_name.capitalize  %>' guitars</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
-            </li>
+            <% if current_user == @user %>
+              <li class="nav-item">
+                  <a class="nav-link text-danger" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
+              </li>
+            <%else%>
+              <li class="nav-item">
+                  <a class="nav-link d-none" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">+Add guitare</a>
+              </li>
+            <% end %>
         </ul>
       </div>
     </div>
-        <div class="col-md-2">
-            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <div class="profile-work">
-              <p>HISTORIQUE DES COMMANDES</p>
-              <p>> date commande nounours en dur <br>> modèle guitare commande nounours<br> > prix commande nounours<br>> loueur commande nounours</p>
+              <p class = "text-danger">DERNIERES COMMANDES</p>
+              <% @user.bookings.last(2).each do |booking| %>
+                <ul>
+                  <li>Modèle:<strong> <%= booking.guitar.brand %> <%= booking.guitar.model %></strong></li>
+                  <li>Période: du <%= booking.start_date %> au <%= booking.end_date %></li>
+                  <li>
+                    Loueur: <%= booking.guitar.user.first_name.capitalize %> <%= booking.guitar.user.last_name.capitalize %>
+                  </li>
+                  <% number_of_days = (booking.end_date - booking.start_date).to_i %>
+                  <li>Prix: <%= number_of_days * booking.guitar.price_per_day %> €</li>
+                </ul>
+              <% end %>
             </div>
         </div>
         <div class="col-md-8">
@@ -75,16 +86,16 @@
                   </div>
                   <div class="row">
                       <div class="col-md-6">
-                          <label>Phone</label>
+                          <label>Ville</label>
                       </div>
                       <div class="col-md-6">
-                          <p>+ 33 6 28 29 65 44</p>
+                          <p><%= @user.city %></p>
                       </div>
                   </div>
                   <div class="row">
                       <div class="col-md-12">
                           <label>Présentation</label><br/>
-                          <p>Salut à tous, je suis Nounours. Cette présentation est tout à fait en dur, aussi vous propose-je de la modifier et d'intégrer ue présentation succinte dans les params de nos users. Bisous</p>
+                          <p><%= @user.description %></p>
                       </div>
                   </div>
                   <div class="row">
@@ -102,7 +113,7 @@
                     </div>
                       <% @user.guitars.each do |guitar| %>
                         <div class="card-product">
-                          <%= image_tag "jaguar.jpg", alt: "jaguar", class: "avatar-large" %>
+                          <%= cl_image_tag guitar.photo, height: 150, width: 150, crop: :fill,class: "card-product-image" %>
                           <div class="card-product-infos" style="width: 500px">
                             <p><strong>Modèle :</strong> "<%= guitar.model %>"</p>
                             <p><strong>Niveau :</strong> "<%= guitar.level %>"
@@ -116,21 +127,25 @@
                       <% end %>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <%= simple_form_for @guitar do |f| %>
-                        <%= f.input :model %>
-                        <%= f.input :level, collection: Guitar::LEVEL %>
-                        <%= f.input :brand %>
-                        <%= f.input :genre, collection: Guitar::GENRE %>
-                        <%= f.input :price_per_day %>
-                        <%#= f.input :photo_cache, as: :hidden %>
-                        <%= f.submit class: "btn btn-outline-danger my-2" %>
-                      <% end %>
+                <% if current_user == @user %>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <%= simple_form_for @guitar do |f| %>
+                          <%= f.input :model %>
+                          <%= f.input :brand %>
+                          <%= f.input :level, collection: Guitar::LEVEL %>
+                          <%= f.input :genre, collection: Guitar::GENRE %>
+                          <%= f.input :price_per_day %>
+                          <%= f.input :description %>
+                          <%= f.input :photo %>
+                          <%= f.input :photo_cache, as: :hidden %>
+                          <%= f.submit class: "btn btn-outline-danger my-2" %>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
             </div>
         </div>
     </div>

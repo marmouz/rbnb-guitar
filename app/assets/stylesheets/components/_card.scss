@@ -7,10 +7,9 @@
     font-size: 12px;
     margin-top: 10px;
   }
-
 }
 
-// Pour la page Liste Guitar, product finder, fiche user
+// Sur la page Liste Guitar, product finder, fiche user
 .card-product {
   overflow: hidden;
   height: 160px;
@@ -19,12 +18,17 @@
   display: flex;
   align-items: center;
   margin: 10px;
+  position: relative;
+
 }
 
 .card-product img {
-  height: 90%;
-  width: 140px;
-  object-fit: cover;
+  margin-left: 4px;
+}
+
+.card-product-image {
+  border: grey 1px solid;
+  border-radius:50%;
 }
 
 .card-product h2 {
@@ -45,10 +49,6 @@
   padding: 16px;
 }
 
-.card-product-infos{
-  position: relative;
-}
-
 .card-product-infos #btn-show-profil {
   position: absolute;
   bottom: 10px;
@@ -56,3 +56,8 @@
 }
 
 
+.card-product-infos #btn-show-index {
+  position: absolute;
+  bottom: 10px;
+  left: 16%;
+}

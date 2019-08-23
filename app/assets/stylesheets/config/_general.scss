@@ -3,6 +3,10 @@
   margin-bottom: 1%;
 }
 
+.container-min {
+  min-height: calc(100vh - 150px);
+}
+
 .site-breadcrumb {
   font-size: 14px;
   margin-top: 5px;
@@ -11,7 +15,4 @@
 
 .img-fit {
   object-fit: cover;
-}
-.container-min {
-  min-height: 100vh;
 }
