@@ -14,7 +14,7 @@ class GuitarsController < ApplicationController
     else
       @guitars = Guitar.all
     end
-    @guitars = @guitars.where.not(user: current_user) if user_signed_in?
+    # @guitars = @guitars.where.not(user: current_user) if user_signed_in?
   end
 
   def show
