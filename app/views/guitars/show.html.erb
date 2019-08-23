@@ -1,11 +1,11 @@
 <div class="container">
-<%= link_to "> Guitar list", guitars_path%>
+<%= link_to "> Liste de guitares", guitars_path,id: "bck-list"%>
   <div class="row d-flex justify-content-center" style="margin-top: 10px;">
     <div class="col-7 mb-3">
         <div class="guitar-presentation">
             <div class="title-price d-flex justify-content-between">
               <div><h1><%= @guitar.brand %> <%= @guitar.model %> </h1></div>
-              <div class="guitar-price"><p> <%=  @guitar.price_per_day %> €/day</p></div>
+              <div class="guitar-price"><p> <%=  @guitar.price_per_day %> €/jour</p></div>
             </div>
             <div class="text-center">
               <%= cl_image_tag @guitar.photo, width: 450, height: 450, crop: :fill %>
