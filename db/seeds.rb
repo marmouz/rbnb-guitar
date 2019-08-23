@@ -78,13 +78,13 @@ guitar8.save!
 
 guitar9 = Guitar.new(model: "FX370C", brand: "Yamaha", genre: "accoustique" , price_per_day: 70, level: "expert", description: "La FX370C est dotée d'une table en épicéa ainsi que d'un dos et d'éclisses en nato. Son design compact avec cutaway lui confère un excellent confort de jeu avec un accès facilité aux aigus. Le capteur piezo monté sous le chevalet lui donne un punch tout particulier.")
 guitar9.user = user2
-url9 = "https://images-na.ssl-images-amazon.com/images/I/71XaMV-v8KL._SL1500_.jpg"
+url9 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1566568965/zoom_l3ghx7.jpg"
 guitar9.remote_photo_url = url9
 guitar9.save!
 
 guitar10 = Guitar.new(model: "TC132SC", brand: "Takamine", genre: "classique", price_per_day: 70, level: "expert", description: " TC132SC, Guitare classique / nylon électro-acoustique de la marque Takamine appartenant à la série Classics & Hirade.")
 guitar10.user = user2
-url10 = "https://c1.zzounds.com/media/productmedia/fit,2018by3200/quality,85/1_Full_Straight_Front_NA-b72e207d5fdcac4e0fe58fcd9a060e73.jpg"
+url10 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1566569038/taka_mkq5pc.jpg"
 guitar10.remote_photo_url = url10
 guitar10.save!
 
