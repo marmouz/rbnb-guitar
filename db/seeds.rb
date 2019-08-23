@@ -23,7 +23,7 @@ url00 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1565970194/ylri2o76a
 user2.remote_photo_url = url00
 user2.save!
 
-puts "create guitar"
+puts "create guitars"
 
 guitar1 = Guitar.new(model: "Stratocaster", brand: "Fender", genre: "electrique", price_per_day: 35, level: "middle", description: "La Stratocaster est le second modèle de guitare électrique produit par la marque américaine Fender. Elle succède à la Telecaster, sans la remplacer, celle-ci restant au catalogue jusqu'à nos jours.")
 guitar1.user = user1
@@ -87,6 +87,7 @@ url10 = "https://c1.zzounds.com/media/productmedia/fit,2018by3200/quality,85/1_F
 guitar10.remote_photo_url = url10
 guitar10.save!
 
+puts "create bookings"
 
 booking1 = Booking.new(end_date: Date.today + 5, start_date:Date.today)
 booking1.user = user2
@@ -98,12 +99,31 @@ booking2.user = user1
 booking2.guitar = guitar6
 booking2.save!
 
+
 booking3 = Booking.new(end_date: Date.today + 9, start_date:Date.today + 7)
 booking3.user = user2
 booking3.guitar = guitar2
 booking3.save!
 
+puts "create reviews"
 
+review1 = Review.new(rating: 4, content: "Personne de confiance qui remplit bien sa tâche de conseiller, même pour les musiciens occasionnels.")
+review1.user = user2
+review1.booking = booking2
+review1.save!
+
+review2 = Review.new(rating: 5, content: "Très satisfait de la Fender que j'ai pu louer. J'ai reçu de bons conseils.")
+review2.user = user1
+review2.booking = booking1
+review2.save!
+
+review3 = Review.new(rating: 2, content: "Niveau conseils, ça va, c'est correct. Mais alors les prix sont excessifs...")
+review3.user = user2
+review3.booking = booking3
+review3.save!
 
 
 puts'end'
+
+
+
