@@ -18,6 +18,7 @@ class GuitarsController < ApplicationController
 
   def show
     @user = @guitar.user
+    @reviews = @user.my_guitar_reviews
     @booking = Booking.new
     @bookings = @guitar.bookings
     @bookings_date = @bookings.map do |booking|

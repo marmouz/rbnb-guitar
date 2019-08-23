@@ -6,8 +6,36 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .img-calendar {
   margin: 20px;
+}
+
+.btn-outline-success {
+  background-color: #F4F4F4 !important;
+}
+.btn-outline-success:hover {
+  background-color: #449D44 !important;
+}
+.center {
+  margin-left: 38%;
+}
+.calendar-card{
+  h2{
+    font-weight: bold;
+    flex: 1;
+  }
+}
+.calendar-form {
+  flex: 2;
+  width: 250px;
+  color:white !important;
+}
+
+.input_form {
+  color:white !important;
 }
