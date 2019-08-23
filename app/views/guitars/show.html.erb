@@ -16,7 +16,7 @@
       <div class="calendar-card" style="background-position: center; background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url(https://res.cloudinary.com/dvmytrwrd/image/upload/c_scale,w_500/v1566563051/guitar_dessin_guf2xf.jpg)">
         <h2>Réservez-moi</h2>
           <div class="calendar-form">
-            <%= simple_form_for [@guitar,@booking], class: "input_form", method: "post" do |f| %>
+            <%= simple_form_for [@guitar,@booking], method: "post" do |f| %>
               <%= f.input :start_date,label: "Date de début",
                           as: :string,
                           required: false,
