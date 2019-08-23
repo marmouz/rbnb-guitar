@@ -13,10 +13,10 @@
       <tr>
         <td data-th="Product">
           <div class="row">
-            <div class="col-sm-2 hidden-xs">
+            <div class="col-3 hidden-xs">
               <%= cl_image_tag @booking.guitar.photo, height: 100, width: 100, crop: :fill,class: "card-product-image" %>
             </div>
-            <div class="col-sm-10">
+            <div class="col-9">
               <h4 class="nomargin"><%= @booking.guitar.model %></h4>
               <p><strong>Marque :</strong> "<%= @booking.guitar.brand %>"</p>
               <p><strong>Style :</strong> "<%= @booking.guitar.genre %>"
