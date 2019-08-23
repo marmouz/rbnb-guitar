@@ -6,7 +6,6 @@ class GuitarsController < ApplicationController
     if params[:genre].present?
       @guitars = Guitar.where("genre ILIKE ?", "%#{params[:genre]}%")
       @title_inject = "de type #{params[:genre]}"
-      raise
     elsif params[:city].present?
       sql_query = " \ users.city ILIKE :query \ "
       @guitars = Guitar.joins(:user).where(sql_query, query: "%#{params[:city]}%")
