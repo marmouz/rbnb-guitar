@@ -6,15 +6,15 @@ class GuitarsController < ApplicationController
     if params[:genre].present?
       @guitars = Guitar.where("genre ILIKE ?", "%#{params[:genre]}%")
       @title_inject = "de type #{params[:genre]}"
+      raise
     elsif params[:city].present?
       users = User.where("city ILIKE ?", "%#{params[:city]}%")
       @guitars = recup_guitar(users)
       @title_inject = "à #{params[:city].capitalize}"
-
     else
       @guitars = Guitar.all
     end
-    @guitars = @guitars.where.not(user: current_user) if user_signed_in?
+    # @guitars = @guitars.where.not(user: current_user) if user_signed_in?
   end
 
   def show
