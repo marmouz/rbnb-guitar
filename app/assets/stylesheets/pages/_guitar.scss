@@ -57,3 +57,11 @@
   color: $success;
 }
 
+.user-name-address a {
+  color:black;
+  font-weight:bold;
+  text-decoration: none;
+  a:hover {
+    text-decoration: none;
+  }
+}
