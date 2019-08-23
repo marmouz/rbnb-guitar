@@ -11,53 +11,45 @@
 
 // Sur la page Liste Guitar, product finder, fiche user
 .card-product {
-  overflow: hidden;
-  height: 160px;
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  margin: 10px;
-  position: relative;
-
-}
-
-.card-product img {
-  margin-left: 4px;
+  overflow:      hidden;
+  height:        160px;
+  background:    white;
+  display:       flex;
+  align-items:   center;
+  margin:        10px;
+  position:      relative;
+  border-radius: 2px;
+  // box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  h2 {
+    font-size:     16px;
+    font-weight:   bold;
+    margin:        0;
+    margin-bottom: 8px;
+  }
+  p {
+    font-size:     12px;
+    line-height:   1.4;
+    opacity:       .7;
+    margin-bottom: 0;
+  }
+  img {
+    margin-left: 4px;
+  }
+  .price {
+    font-size:   22px !important;
+    font-weight: bold;
+  }
 }
 
 .card-product-image {
   border: grey 1px solid;
   border-radius:50%;
+  width: 150px;
+  height: 150px;
 }
 
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+.card-product-infos {
+  padding: 10px;
+  height:  150px;
 }
 
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
-}
-
-.card-product-infos #btn-show-profil {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-}
-
-
-.card-product-infos #btn-show-index {
-  position: absolute;
-  bottom: 10px;
-  left: 16%;
-}

@@ -8,6 +8,7 @@
 require 'faker'
 
 puts"destroy"
+Review.destroy_all
 Booking.destroy_all
 Guitar.destroy_all
 User.destroy_all
