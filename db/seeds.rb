@@ -8,6 +8,7 @@
 require 'faker'
 
 puts"destroy"
+Review.destroy_all
 Booking.destroy_all
 Guitar.destroy_all
 User.destroy_all
@@ -111,7 +112,7 @@ review1 = Review.new(rating: 4, content: "Personne de confiance qui remplit bien
 review1.user = user1
 review1.booking = booking2
 review1.save!
-review2 = Review.new(rating: 5, content: "Très satisfaite de la Fender que j'ai pu louer. J'ai reçu de bons conseils.")
+sreview2 = Review.new(rating: 5, content: "Très satisfaite de la Fender que j'ai pu louer. J'ai reçu de bons conseils.")
 review2.user = user2
 review2.booking = booking1
 review2.save!
