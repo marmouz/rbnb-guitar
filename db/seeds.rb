@@ -19,7 +19,7 @@ url0 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1566478559/ours-grizz
 user1.remote_photo_url = url0
 user1.save!
 
-user2 = User.new(email: "faust@gmail.com", password: "lafaust", first_name: "faustine", last_name:"faustinier", address:"37 avenue Germaine", city: "La Madeleine", description: "Salut, c'est la Faust ! Bon, si c'est pour commencer à dire des aneries, c'est pas la peine ! Parceque des sexistes et des phallocrates comme vous, ça commence à bien faire ! A ce sujet, saviez vous que Faust était une oeuvre du poète allemand Friedriech Van Goethe ? Allez tchao les nullos !")
+user2 = User.new(email: "faust@gmail.com", password: "lafaust", first_name: "faustine", last_name:"faustinier", address:"37 avenue Germaine", city: "La Madeleine", description: "Salut, c'est la Faust ! Bon, si c'est pour commencer à dire des aneries, c'est pas la peine ! A ce sujet, saviez vous que Faust était une oeuvre du poète allemand Friedriech Van Goethe ? Allez tchao les nullos !")
 url00 = "https://res.cloudinary.com/dvmytrwrd/image/upload/v1565970194/ylri2o76agtzybaptiir.jpg"
 user2.remote_photo_url = url00
 user2.save!
